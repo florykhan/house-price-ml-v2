@@ -12,4 +12,4 @@
 10. Deactivate venv when done
 
 
-python3 -m src/train.py
+python3 -m src.train
