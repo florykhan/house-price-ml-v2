@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import pandas as pd
+import numpy as np
 
 def apply_feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -12,5 +13,42 @@ def apply_feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     - log transforms
     - polynomial features
     """
-    # TODO: implement real feature engineering
-    return df.copy()
+    df = df.copy()
+
+    # 1. Log transforms (avoid 0)
+    log_features = [
+        "median_income",
+        "total_rooms",
+        "total_bedrooms",
+        "population",
+        "households",
+    ]
+
+    for col in log_features:
+        if col in df.columns:
+            df[f"log_{col}"] = np.log1p(df[col])   # log(1 + x)
+
+    # 2. Add ratio/interaction features
+    if "total_rooms" in df.columns and "households" in df.columns:
+        df["rooms_per_household"] = df["total_rooms"] / df["households"]
+
+    if "total_bedrooms" in df.columns and "total_rooms" in df.columns:
+        df["bedrooms_per_room"] = df["total_bedrooms"] / df["total_rooms"]
+
+    if "population" in df.columns and "households" in df.columns:
+        df["population_per_household"] = df["population"] / df["households"]
+
+    # 3. Optional low-degree polynomial
+    # Only apply polynomial to median_income (most impactful)
+    if "median_income" in df.columns:
+        df["median_income_sq"] = df["median_income"] ** 2
+
+    # 4. Drop non-numerical features
+    # ocean_proximity is categorical, drop it for now
+    if "ocean_proximity" in df.columns:
+        df = df.drop(columns=["ocean_proximity"])
+
+    # 5. Fill any created NaNs
+    df = df.fillna(0)
+
+    return df
