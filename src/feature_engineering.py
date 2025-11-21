@@ -15,6 +15,10 @@ def apply_feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     """
     df = df.copy()
 
+    # 0. One-Hot Encoding
+    if "ocean_proximity" in df.columns:
+        df = pd.get_dummies(df, columns=["ocean_proximity"], drop_first=True)
+        
     # 1. Log transforms (avoid 0)
     log_features = [
         "median_income",
@@ -43,12 +47,7 @@ def apply_feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     if "median_income" in df.columns:
         df["median_income_sq"] = df["median_income"] ** 2
 
-    # 4. Drop non-numerical features
-    # ocean_proximity is categorical, drop it for now
-    if "ocean_proximity" in df.columns:
-        df = df.drop(columns=["ocean_proximity"])
-
-    # 5. Fill any created NaNs
+    # 4. Fill any created NaNs
     df = df.fillna(0)
 
     return df
