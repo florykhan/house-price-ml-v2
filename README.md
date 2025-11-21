@@ -10,3 +10,6 @@
 8. Install new dependencies if needed
 9. Git add → commit → push
 10. Deactivate venv when done
+
+
+python3 -m src/train.py
