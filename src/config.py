@@ -16,8 +16,8 @@ class Config:
     random_state: int = 42
 
     # Gradient Descent defaults
-    learning_rate: float = 0.01
-    n_iterations: int = 1000
+    learning_rate: float = 0.05
+    n_iterations: int = 5000
 
     # Regularization
     use_l2: bool = False
@@ -28,5 +28,5 @@ class Config:
     n_splits: int = 5
 
     # Hyperparameter Tuning
-    use_hyperparameter_tuning = False
+    use_hyperparameter_tuning: bool = False
 
