@@ -7,14 +7,13 @@ import numpy as np
 
 class LinearRegressionGD:
     """
-    Linear Regression trained with batch gradient descent.
+    Linear Regression model trained using batch gradient descent.
 
-    This is just the skeleton for now.
-    We'll implement:
-    - fit()
-    - predict()
-    - loss history tracking
-    - optional L1/L2 regularization
+    This class provides:
+    - fit(): parameter optimization via gradient descent
+    - predict(): generate predictions for new input data
+    - loss tracking across iterations
+    - optional L1 and L2 regularization support
     """
 
     def __init__(
