@@ -9,6 +9,7 @@ from .feature_engineering import apply_feature_engineering
 from .preprocessing import compute_standardization_params, apply_standardization
 from .gradient_descent import LinearRegressionGD
 from .evaluation import evaluate_regression
+from .hyperparameter_tuning import grid_search
 
 
 def main() -> None:
@@ -22,21 +23,30 @@ def main() -> None:
     6. Scale train and test
     7. Train model (gradient descent)
     8. Evaluate
+    9. Hyperparameter tuning (optional)
     """
+    # ------ 1. Load config ------
     config = Config()
 
+    # ------ 2. Load RAW data ------
     df = load_raw_data(config)
 
+    # ------ 3. Feature engineering ------
     df_fe = apply_feature_engineering(df)
 
+    # ------ 4. Train/test split ------
     X_train, X_test, y_train, y_test = train_test_split_data(
         df_fe, target_col="median_house_value", config=config
     )
 
+    # ------ 5. Compute standardization ------
     std_params = compute_standardization_params(X_train)
+
+    # ------ 6. Scale train and test ------
     X_train_scaled = apply_standardization(X_train, std_params)
     X_test_scaled = apply_standardization(X_test, std_params)
 
+    # ------ 7. Train model ------
     model = LinearRegressionGD(
         learning_rate=config.learning_rate,
         n_iterations=config.n_iterations,
@@ -49,16 +59,37 @@ def main() -> None:
         y_train.to_numpy(),
     )
 
+    # Predictions
+    y_pred = model.predict(X_test_scaled.to_numpy())
+
+    # ------ 8. Evaluate ------
+    metrics = evaluate_regression(y_test.to_numpy(), y_pred)
+    print(metrics)
+
+    # Plot training loss
     plt.plot(model.loss_history)
     plt.xlabel("Iteration")
     plt.ylabel("Loss (MSE + Regularization)")
     plt.title("Training Loss Curve")
     plt.show()
 
-    y_pred = model.predict(X_test_scaled.to_numpy())
+    # ------ 9. Hyperparameter tuning (Optional) ------
+    if config.use_hyperparameter_tuning:
+        print("\nRunning hyperparameter tuning...\n")
 
-    metrics = evaluate_regression(y_test.to_numpy(), y_pred)
-    print(metrics)
+        best_params, best_r2, all_results = grid_search(
+            X_train_scaled.to_numpy(),
+            y_train.to_numpy(),
+            X_test_scaled.to_numpy(),
+            y_test.to_numpy(),
+        )
+
+        print("\nBest hyperparameters found:")
+        print(f"learning_rate={best_params[0]}")
+        print(f"iterations={best_params[1]}")
+        print(f"L1={best_params[2]}")
+        print(f"L2={best_params[3]}")
+        print(f"Best R²={best_r2:.5f}")
 
 
 if __name__ == "__main__":
