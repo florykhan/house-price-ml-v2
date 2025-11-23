@@ -10,6 +10,7 @@ from .preprocessing import compute_standardization_params, apply_standardization
 from .gradient_descent import LinearRegressionGD
 from .evaluation import evaluate_regression
 from .hyperparameter_tuning import grid_search
+from .model_io import save_model
 
 
 def main() -> None:
@@ -23,7 +24,8 @@ def main() -> None:
     6. Scale train and test
     7. Train model (gradient descent)
     8. Evaluate
-    9. Hyperparameter tuning (optional)
+    9. Save model
+    10. Hyperparameter tuning (optional)
     """
     # ------ 1. Load config ------
     config = Config()
@@ -73,7 +75,16 @@ def main() -> None:
     plt.title("Training Loss Curve")
     plt.show()
 
-    # ------ 9. Hyperparameter tuning (Optional) ------
+    # ------ 9. Save model ------
+    save_model(
+        filepath="models/model_v2.npz",
+        model=model,
+        std_params=std_params,
+        feature_names=X_train.columns.tolist(),
+        config=config,
+    )
+
+    # ------ 10. Hyperparameter tuning (Optional) ------
     if config.use_hyperparameter_tuning:
         print("\nRunning hyperparameter tuning...\n")
 
