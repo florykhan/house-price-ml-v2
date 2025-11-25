@@ -31,24 +31,28 @@ def apply_feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
 
     for col in log_features:
         if col in df.columns:
-            df[f"log_{col}"] = np.log1p(df[col])   # log(1 + x)
+            df[f"log_{col}"] = np.log1p(df[col].fillna(0))   # log(1 + x)
 
-    # 2. Add ratio/interaction features
+    # 2. Add ratio/interaction features + safe division
+    def safe_div(a, b):
+        return (a / b.replace(0, np.nan)).fillna(0) # replace all zeros in 'b' with NaN -> since dividing by NaN produces NaN
+    
     if "total_rooms" in df.columns and "households" in df.columns:
-        df["rooms_per_household"] = df["total_rooms"] / df["households"]
+        df["rooms_per_household"] = safe_div(df["total_rooms"], df["households"])
 
     if "total_bedrooms" in df.columns and "total_rooms" in df.columns:
-        df["bedrooms_per_room"] = df["total_bedrooms"] / df["total_rooms"]
+        df["bedrooms_per_room"] = safe_div(df["total_bedrooms"], df["total_rooms"])
 
     if "population" in df.columns and "households" in df.columns:
-        df["population_per_household"] = df["population"] / df["households"]
+        df["population_per_household"] = safe_div(df["population"], df["households"])
 
     # 3. Optional low-degree polynomial
     # Only apply polynomial to median_income (most impactful)
     if "median_income" in df.columns:
-        df["median_income_sq"] = df["median_income"] ** 2
+        df["median_income_sq"] = df["median_income"].fillna(0) ** 2
 
     # 4. Fill any created NaNs
+    df = df.replace([np.inf, -np.inf], 0)
     df = df.fillna(0)
 
     return df

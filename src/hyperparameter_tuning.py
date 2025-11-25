@@ -50,6 +50,13 @@ def grid_search(
                     model.fit(X_train, y_train)
                     preds = model.predict(X_test)
 
+                    # Skip this parameter set if predictions are invalid
+                    if np.isnan(preds).any() or np.isinf(preds).any():
+                        print("Warning: invalid predictions (NaN/inf), skipping this parameter set")
+                        run_idx += 1
+                        continue
+
+
                     metrics = evaluate_regression(y_test, preds)
                     r2 = metrics["r2"]
 

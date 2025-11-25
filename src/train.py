@@ -80,7 +80,7 @@ def main() -> None:
         filepath="models/model_v2.npz",
         model=model,
         std_params=std_params,
-        feature_names=X_train.columns.tolist(),
+        feature_names=X_train_scaled.columns.tolist(),
         config=config,
     )
 

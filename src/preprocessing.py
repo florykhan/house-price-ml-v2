@@ -27,9 +27,17 @@ def apply_standardization(
     """
     Apply standardization using precomputed means and stds.
     """
+    # 1. Align columns to training columns
+    train_cols = params["columns"]
+    X = X.reindex(columns=train_cols)
+
+    # 2. Fill missing values BEFORE scaling
+    X = X.fillna(0)   # or better: X.fillna(means), but 0 is stable for ratios
+
     means = params["means"]
     stds = params["stds"].replace(0, 1.0) # avoid divide-by-zero
 
+    # 3. Apply scaling
     X_scaled = (X - means) / stds
 
     return pd.DataFrame(X_scaled, columns=params["columns"], index=X.index)
