@@ -19,6 +19,105 @@ in the next project combine hyperparameter tuning with cv 🔥
 
 ---
 
+1. Title + one-sentence tagline
+
+Short, clean, aesthetic.
+
+House Price Prediction (v2)
+End-to-end ML pipeline with engineered features, linear models, custom Gradient Descent, and cross-validation.
+
+2. Project Overview
+
+A short paragraph (4–6 lines).
+Not the whole story — just enough to understand what the project is.
+
+Example:
+
+This project builds a complete machine learning workflow for predicting California house prices. It includes engineered features, multiple linear regression models (OLS, Ridge, Lasso), a custom Gradient Descent Regressor built from scratch, cross-validation experiments, and a modular training pipeline.
+
+Version 2 focuses on engineering best practices, modularity, and reproducibility.
+
+3. Key Features
+
+Use bullets:
+
+Feature engineering module
+
+OLS / Ridge / Lasso implementations
+
+Custom Gradient Descent model
+
+5-fold cross-validation
+
+Hyperparameter tuning
+
+Full training pipeline script
+
+Five documented Jupyter notebooks
+
+This table quickly sells the project.
+
+4. Project Structure
+
+Code + notebooks overview (short).
+
+5. Installation
+
+Just the commands:
+
+pip install -r requirements.txt
+
+6. How to Run
+
+Example:
+
+Run the full training pipeline
+python -m src.training_pipeline
+
+Open the notebooks
+
+01 — Feature Engineering
+
+02 — Experimental Models
+
+03 — Gradient Descent
+
+04 — Cross-Validation
+
+05 — Training Demo
+
+7. Results Summary
+
+A very short results section:
+
+Best model: Ridge (α=…)
+
+CV R² score: …
+
+Test R² score: …
+
+Do NOT put full tables — those belong in the report.
+
+8. Link to full report
+
+Link to report.md:
+
+For the full technical explanation, see report.md
+
+This is where you point anyone who wants deep detail.
+
+9. Tech Stack
+
+Python
+
+scikit-learn
+
+NumPy
+
+Matplotlib / Seaborn
+
+Jupyter
+
 ## 🧠 Tech Stack
 
 - **Language:** Python 3.11  
