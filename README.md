@@ -152,19 +152,29 @@ Recommended order:
 
 ---
 
-## 📈 Results (Summary)
+## 📊 Results (Summary)
 
+<table>
+<tr>
+<td>
+  
 ### Custom Gradient Descent Regressor
-- Converged in ~1500 iterations  
-- Test RMSE: ~75,000 USD  
-- Test R²: ~0.58  
+- Converged in ~1500 iterations
+- Test RMSE: ~74.6K USD
+- Test R²: ~0.57
+  
+</td>
+<td style="vertical-align: top; padding-left: 25px;">
 
-### Best overall model (from report):
-- Ridge Regression with α = 1.0  
-- Test RMSE: ~73,000 USD  
-- Test R²: ~0.60  
+- The model explains ~60 % of variance in housing prices.
+- Captures strong linear trends (e.g., income vs. price) but misses nonlinear and interaction effects.
+  
+</td>
+</tr>
+</table>
 
-Do NOT put full tables — those belong in the report. -> Ket takeaways (1-2 bullets)
+➡️ For full model comparisons (Ridge, Lasso, CV results, etc.), see the full report: [`reports/report.md`](reports/report.md)
+
 
 ---
 
