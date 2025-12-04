@@ -89,7 +89,7 @@ house-price-ml-v2/
 
 > 🗒️ **Note:**  
 > Version 2 uses a **fully modular architecture** inside `src/`, and the `notebooks/` directory follows a clean, sequential workflow from exploration → baselines → cross-validation → final pipeline.
-> - The `data/` directory is **not tracked by Git** to avoid storing large files and to keep the repository lightweight. Only *raw* data should be placed here, and the `data/processed/` folder exists as a placeholder for a scalable workflow, but **no processed data is saved in this project** — all transformations are generated dynamically by the pipeline / notebooks.  
+> - The `data/` directory is **not tracked by Git** to avoid storing large files and to keep the repository lightweight. Only *raw* data should be placed here. The `data/processed/` folder exists as a placeholder for a scalable workflow, but **no processed data is saved in this project** — all transformations are generated dynamically by the pipeline / notebooks.  
 > - The `models/` directory is also **excluded from Git**, since model artifacts are generated during training and can be reproduced at any time by running the pipeline.
 
 ---
