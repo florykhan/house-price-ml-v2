@@ -1,6 +1,6 @@
 # 🏠 House Price Prediction — v2 Enhanced ML Pipeline
 
-This repository implements an **advanced, modular machine learning pipeline** for predicting median house prices in California. It represents the **second version (v2)** of the project, introducing engineered features, regularized linear models, cross-validation, hyperparameter tuning, and a custom Gradient Descent implementation built from scratch.
+This repository implements an **advanced, custom modular machine learning pipeline** for predicting median house prices in California. It represents the **second version (v2)** of the project, introducing engineered features, regularized linear models, cross-validation, hyperparameter tuning, and a custom Gradient Descent implementation built from scratch — all organized into reusable **source modules** powering the end-to-end training pipeline.
 
 ---
 
@@ -33,7 +33,7 @@ A quick overview of improvements introduced in Version 2:
 
 ## ✨ Key Features
 
-- **Modular ML pipeline** (`src/` folder) for clean separation of preprocessing, training, evaluation, and utilities.
+- **Custom Modular ML pipeline** (`src/` folder) for clean separation of preprocessing, training, evaluation, and utilities.
 - **Feature engineering & standardization**, ensuring consistent transformations across training and inference.
 - **Multiple linear models**:
   - OLS (Linear Regression)
@@ -42,13 +42,8 @@ A quick overview of improvements introduced in Version 2:
 - **Custom Gradient Descent Regressor** implemented from scratch with configurable learning rate, iterations, and convergence tracking.
 - **5-fold Cross-Validation** for assessing model stability and variance.
 - **Hyperparameter tuning** for regularized models using a simple grid search workflow.
-- **Reproducible training pipeline** (`python -m src.training_pipeline`) for end-to-end training and evaluation.
-- **Five structured Jupyter notebooks** documenting the full development process:
-  - Feature engineering  
-  - Model experiments  
-  - Gradient Descent implementation  
-  - Cross-validation  
-  - End-to-end demonstration
+- **Reproducible training pipeline** (`python3 -m src.train`) for end-to-end training and evaluation.
+- **Five structured Jupyter notebooks** documenting the full development process.
 
 ---
 
@@ -94,7 +89,8 @@ house-price-ml-v2/
 
 > 🗒️ **Note:**  
 > Version 2 uses a **fully modular architecture** inside `src/`, and the `notebooks/` directory follows a clean, sequential workflow from exploration → baselines → cross-validation → final pipeline.
-> `data/processed/` — holds intermediate transformed data during notebook work, but **processed outputs are not persisted** since transformations are reproducible through the pipeline.
+> - The `data/` directory is **not tracked by Git** to avoid storing large files and to keep the repository lightweight. Only *raw* data should be placed here, and the `data/processed/` folder exists as a placeholder for a scalable workflow, but **no processed data is saved in this project** — all transformations are generated dynamically by the pipeline / notebooks.  
+> - The `models/` directory is also **excluded from Git**, since model artifacts are generated during training and can be reproduced at any time by running the pipeline.
 
 ---
 
