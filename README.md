@@ -186,6 +186,8 @@ Although Version 2 concludes the development of this repository, there are sever
 
 - **Work with more complex datasets:** move into NLP, image processing, or time-series problems to broaden your portfolio and ML expertise.
 
+- **Add CI/CD workflows:** introduce lightweight GitHub Actions to automate code quality checks, formatting, dependency validation, and simple import tests, improving project reliability and demonstrating real-world ML engineering practices.
+
 ---
 
 ## 🧠 Tech Stack
