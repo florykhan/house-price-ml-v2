@@ -43,27 +43,35 @@ This version focuses on **engineering best practices**, enabling experimentation
 ```
 house-price-ml-v2/
 │
-├── data/                                  # Placeholder for dataset files (empty by default)
-│
-├── models/                                # Saved model artifacts (optional, can be ignored in Git)
+├── data/                                  # Local dataset storage (not included in Git intentionally for privacy / size)
+│   ├── processed/                         # Cleaned / transformed data (not saved in this project; kept ephemeral)
+│   └── raw/                               # Unmodified input data (as downloaded)
+│   
+├── models/                                # Saved model artifacts (not included in Git to avoid large files and ensure reproducible training)
 │
 ├── notebooks/                             # Full development workflow (v2 notebooks)
 │   ├── 01_exploration.ipynb               # Initial EDA, data inspection, distributions, correlations
-│   ├── 02_model_evaluation.ipynb          # Baseline experiments, preprocessing tests, metric checks
-│   ├── 03_sklearn_baseline.ipynb          # OLS, Ridge, Lasso training using scikit-learn
-│   ├── 04_cross_validation.ipynb          # 5-fold CV for all models, stability analysis
-│   └── 05_pipeline_demo.ipynb             # Full training pipeline demonstration (end-to-end)
+│   ├── 02_model_evaluation.ipynb          # Training and evaluating the custom Gradient Descent Regressor
+│   ├── 03_sklearn_baseline.ipynb          # Baseline Linear Regression using scikit-learn (LinearRegression)
+│   ├── 04_cross_validation.ipynb          # 5-fold CV comparing OLS, Ridge, and Lasso models, stability analysis
+│   └── 05_pipeline_demo.ipynb             # End-to-end demonstration of the modular training pipeline
 │
 ├── reports/                               # Project documentation and reports
+│   ├── metrics/
+│   ├── plots/
 │   └── report.md                          # Detailed technical write-up for Version 2
 │
-├── src/                                   # Modular machine learning pipeline
-│   ├── feature_engineering.py             # Data cleaning, transformations, standardization
-│   ├── gradient_descent.py                # Custom Gradient Descent Regressor (from scratch)
+├── src/                                   # Modular machine learning pipeline (from scratch)
+│   ├── __init__.py                        # Marks directory as a Python package
+│   ├── config.py                          # Centralized configuration / constants
+│   ├── data_loader.py                     # Data loading utilities for datasets
 │   ├── evaluation.py                      # Metrics, scoring utilities, model evaluation logic
-│   ├── hyperparameter_tuning.py           # Grid search utilities for Ridge/Lasso
-│   ├── training_pipeline.py               # End-to-end pipeline (run via: python -m src.training_pipeline)
-│   └── utils.py                           # Shared helper functions (loading, saving, validation)
+│   ├── feature_engineering.py             # Data cleaning, feature transformations, scaling logic
+│   ├── gradient_descent.py                # Custom Gradient Descent Regressor
+│   ├── hyperparameter_tuning.py           # Grid search utilities
+│   ├── model_io.py                        # Save/load functions for pipeline components and artifacts
+│   ├── preprocessing.py                   # Preprocessing utilities (standardization)
+│   └── train.py                           # End-to-end pipeline (run via: python3 -m src.train)
 │
 ├── .gitignore
 ├── LICENSE
@@ -73,6 +81,7 @@ house-price-ml-v2/
 
 > 🗒️ **Note:**  
 > Version 2 uses a **fully modular architecture** inside `src/`, and the `notebooks/` directory follows a clean, sequential workflow from exploration → baselines → cross-validation → final pipeline.
+> `data/processed/` — holds intermediate transformed data during notebook work, but **processed outputs are not persisted** since transformations are reproducible through the pipeline.
 
 ---
 
