@@ -1,22 +1,4 @@
 # Feature Engineering - Under Development...
-
-1. Open terminal
-2. cd into project
-3. Activate venv (“(venv)” appears) -> source venv/bin/activate
-4. Open VS Code (code .)
-5. Edit Python modules in src/
-6. Run training (python -m src.train)
-7. Work in notebooks for exploration
-8. Install new dependencies if needed
-9. Git add → commit → push
-10. Deactivate venv when done
-
-
-python3 -m src.train
-
-
-in the next project combine hyperparameter tuning with cv 🔥
-
 ---
 
 1. Title + one-sentence tagline
@@ -71,7 +53,9 @@ pip install -r requirements.txt
 
 Example:
 
-Run the full training pipeline
+Run the full training pipeline 
+python3 -m src.train
+OR
 python -m src.training_pipeline
 
 Open the notebooks
@@ -96,7 +80,7 @@ CV R² score: …
 
 Test R² score: …
 
-Do NOT put full tables — those belong in the report.
+Do NOT put full tables — those belong in the report. -> Ket takeaways (1-2 bullets)
 
 8. Link to full report
 
@@ -106,7 +90,10 @@ For the full technical explanation, see report.md
 
 This is where you point anyone who wants deep detail.
 
-9. Tech Stack
+9. Future Work
+in the next project combine hyperparameter tuning with cv 🔥
+
+10. Tech Stack
 
 Python
 
