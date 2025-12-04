@@ -1,47 +1,80 @@
-# Feature Engineering - Under Development...
+# 🏠 House Price Prediction — v2 Enhanced ML Pipeline
+
+This repository implements an **advanced, modular machine learning pipeline** for predicting median house prices in California.  
+It represents the **second version (v2)** of the project, introducing engineered features, regularized linear models, cross-validation, hyperparameter tuning, and a custom Gradient Descent implementation built from scratch.
+
 ---
 
-1. Title + one-sentence tagline
+## 🎯 Project Overview
 
-Short, clean, aesthetic.
+The goal of this version is to:
+- Build a **fully modular, extensible machine learning pipeline** for structured tabular data.
+- Introduce **feature engineering and standardization** to improve model stability and performance.
+- Implement and compare **multiple linear models**, including OLS, Ridge, Lasso, and a custom Gradient Descent Regressor built from scratch.
+- Evaluate model robustness through **5-fold cross-validation** and targeted hyperparameter tuning.
+- Establish a **reproducible training workflow** that cleanly separates preprocessing, model training, evaluation, and inference.
 
-House Price Prediction (v2)
-End-to-end ML pipeline with engineered features, linear models, custom Gradient Descent, and cross-validation.
+This version focuses on **engineering best practices**, enabling experimentation, modularity, and reliable performance benchmarking across models.
 
-2. Project Overview
+---
 
-A short paragraph (4–6 lines).
-Not the whole story — just enough to understand what the project is.
+## ✨ Key Features
 
-Example:
+- **Modular ML pipeline** (`src/` folder) for clean separation of preprocessing, training, evaluation, and utilities.
+- **Feature engineering & standardization**, ensuring consistent transformations across training and inference.
+- **Multiple linear models**:
+  - OLS (Linear Regression)
+  - Ridge Regression (L2)
+  - Lasso Regression (L1)
+- **Custom Gradient Descent Regressor** implemented from scratch with configurable learning rate, iterations, and convergence tracking.
+- **5-fold Cross-Validation** for assessing model stability and variance.
+- **Hyperparameter tuning** for regularized models using a simple grid search workflow.
+- **Reproducible training pipeline** (`python -m src.training_pipeline`) for end-to-end training and evaluation.
+- **Five structured Jupyter notebooks** documenting the full development process:
+  - Feature engineering  
+  - Model experiments  
+  - Gradient Descent implementation  
+  - Cross-validation  
+  - End-to-end demonstration
 
-This project builds a complete machine learning workflow for predicting California house prices. It includes engineered features, multiple linear regression models (OLS, Ridge, Lasso), a custom Gradient Descent Regressor built from scratch, cross-validation experiments, and a modular training pipeline.
+---
 
-Version 2 focuses on engineering best practices, modularity, and reproducibility.
+## 🧱 Repository Structure
+```
+house-price-ml-v2/
+│
+├── data/                                  # Placeholder for dataset files (empty by default)
+│
+├── models/                                # Saved model artifacts (optional, can be ignored in Git)
+│
+├── notebooks/                             # Full development workflow (v2 notebooks)
+│   ├── 01_exploration.ipynb               # Initial EDA, data inspection, distributions, correlations
+│   ├── 02_model_evaluation.ipynb          # Baseline experiments, preprocessing tests, metric checks
+│   ├── 03_sklearn_baseline.ipynb          # OLS, Ridge, Lasso training using scikit-learn
+│   ├── 04_cross_validation.ipynb          # 5-fold CV for all models, stability analysis
+│   └── 05_pipeline_demo.ipynb             # Full training pipeline demonstration (end-to-end)
+│
+├── reports/                               # Project documentation and reports
+│   └── report.md                          # Detailed technical write-up for Version 2
+│
+├── src/                                   # Modular machine learning pipeline
+│   ├── feature_engineering.py             # Data cleaning, transformations, standardization
+│   ├── gradient_descent.py                # Custom Gradient Descent Regressor (from scratch)
+│   ├── evaluation.py                      # Metrics, scoring utilities, model evaluation logic
+│   ├── hyperparameter_tuning.py           # Grid search utilities for Ridge/Lasso
+│   ├── training_pipeline.py               # End-to-end pipeline (run via: python -m src.training_pipeline)
+│   └── utils.py                           # Shared helper functions (loading, saving, validation)
+│
+├── .gitignore
+├── LICENSE
+├── README.md
+└── requirements.txt
+```
 
-3. Key Features
+> 🗒️ **Note:**  
+> Version 2 uses a **fully modular architecture** inside `src/`, and the `notebooks/` directory follows a clean, sequential workflow from exploration → baselines → cross-validation → final pipeline.
 
-Use bullets:
-
-Feature engineering module
-
-OLS / Ridge / Lasso implementations
-
-Custom Gradient Descent model
-
-5-fold cross-validation
-
-Hyperparameter tuning
-
-Full training pipeline script
-
-Five documented Jupyter notebooks
-
-This table quickly sells the project.
-
-4. Project Structure
-
-Code + notebooks overview (short).
+---
 
 5. Installation
 
@@ -70,15 +103,17 @@ Open the notebooks
 
 05 — Training Demo
 
-7. Results Summary
+## 📈 Results (Summary)
 
-A very short results section:
+### Custom Gradient Descent Regressor
+- Converged in ~1500 iterations  
+- Test RMSE: ~75,000 USD  
+- Test R²: ~0.58  
 
-Best model: Ridge (α=…)
-
-CV R² score: …
-
-Test R² score: …
+### Best overall model (from report):
+- Ridge Regression with α = 1.0  
+- Test RMSE: ~73,000 USD  
+- Test R²: ~0.60  
 
 Do NOT put full tables — those belong in the report. -> Ket takeaways (1-2 bullets)
 
