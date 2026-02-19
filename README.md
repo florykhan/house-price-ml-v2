@@ -1,4 +1,4 @@
-# 🏠 House Price Prediction — v2 Enhanced ML Pipeline
+# 🏠 House Price Prediction | v2 Enhanced ML Pipeline
 
 This repository implements an **advanced, custom modular machine learning pipeline** for predicting median house prices in California. It represents the **second version (v2)** of the project, introducing engineered features, regularized linear models, cross-validation, hyperparameter tuning, and a custom Gradient Descent implementation built from scratch — all organized into reusable **source modules** powering the end-to-end training pipeline.
 
@@ -212,8 +212,7 @@ Although Version 2 concludes the development of this repository, there are sever
 ---
 
 ## 🧾 License
-MIT License — feel free to use and modify with attribution.
-See the [`LICENSE`](./LICENSE) file for full details.
+MIT License, feel free to use and modify with attribution. See the [`LICENSE`](./LICENSE) file for full details.
 
 ---
 
