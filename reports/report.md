@@ -43,25 +43,25 @@ house-price-ml-v2/
 ├── notebooks/
 │   ├── 01_exploration.ipynb          # EDA, distributions, correlations
 │   ├── 02_model_evaluation.ipynb     # Custom Gradient Descent training & evaluation
-│   ├── 03_sklearn_baseline.ipynb      # Sklearn LinearRegression baseline
-│   ├── 04_cross_validation.ipynb      # 5-fold CV: OLS, Ridge, Lasso
+│   ├── 03_sklearn_baseline.ipynb     # Sklearn LinearRegression baseline
+│   ├── 04_cross_validation.ipynb     # 5-fold CV: OLS, Ridge, Lasso
 │   └── 05_pipeline_demo.ipynb        # End-to-end pipeline demo
 │
 ├── reports/
 │   ├── metrics/                      # Exported JSON metrics (CV, test scores)
 │   ├── plots/                        # Figures (loss curves, predicted vs actual, residuals, CV)
-│   └── report.md                    # This document
+│   └── report.md                     # This document
 │
 ├── src/
-│   ├── config.py                    # Paths, random_state, learning_rate, n_splits, etc.
-│   ├── data_loader.py               # Load raw data, train/test split
-│   ├── evaluation.py                # MAE, RMSE, R²
-│   ├── feature_engineering.py       # Transformations and derived features
-│   ├── gradient_descent.py          # Custom LinearRegressionGD
-│   ├── hyperparameter_tuning.py     # Grid search over α (Ridge/Lasso)
-│   ├── model_io.py                  # Save/load pipeline artifacts
-│   ├── preprocessing.py            # Standardization (fit on train, apply to train/test)
-│   └── train.py                    # Full pipeline entry point
+│   ├── config.py                     # Paths, random_state, learning_rate, n_splits, etc.
+│   ├── data_loader.py                # Load raw data, train/test split
+│   ├── evaluation.py                 # MAE, RMSE, R²
+│   ├── feature_engineering.py        # Transformations and derived features
+│   ├── gradient_descent.py           # Custom LinearRegressionGD
+│   ├── hyperparameter_tuning.py      # Grid search over α (Ridge/Lasso)
+│   ├── model_io.py                   # Save/load pipeline artifacts
+│   ├── preprocessing.py              # Standardization (fit on train, apply to train/test)
+│   └── train.py                      # Full pipeline entry point
 │
 ├── README.md
 └── requirements.txt
@@ -291,3 +291,4 @@ Re-running the notebooks in order and executing `python3 -m src.train` after pla
 ---
 
 *End of Report*
+
