@@ -174,6 +174,7 @@ Recommended order:
 ➡️ For full model comparisons (Ridge, Lasso, CV results, etc.), see the full report: [`reports/report.md`](reports/report.md)
 
 ![Feature distributions and model inputs](./data/raw/01_feature_distributions.png)
+_Feature distributions and model inputs_
 
 ---
 
