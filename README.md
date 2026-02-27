@@ -31,6 +31,9 @@ A quick overview of improvements introduced in Version 2:
 | Pipeline | Notebook-only | Modular Python pipeline (`src/`) |
 | Performance | Higher RMSE | Lower RMSE after FE + regularization |
 
+![Geographical distribution of housing prices](./data/raw/01_geographical_housing_prices.png)
+_EDA: median house values across California — location and ocean proximity drive much of the variation_
+
 ---
 
 ## ✨ Key Features
@@ -169,6 +172,8 @@ Recommended order:
 
 
 ➡️ For full model comparisons (Ridge, Lasso, CV results, etc.), see the full report: [`reports/report.md`](reports/report.md)
+
+![Feature distributions and model inputs](./data/raw/01_feature_distributions.png)
 
 ---
 
